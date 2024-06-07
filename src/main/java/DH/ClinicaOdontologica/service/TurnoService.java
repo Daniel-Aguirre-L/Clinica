@@ -1,31 +1,34 @@
 package DH.ClinicaOdontologica.service;
 
-
-import DH.ClinicaOdontologica.dao.TurnoDAOLISTA;
-import DH.ClinicaOdontologica.dao.iDao;
-import DH.ClinicaOdontologica.model.Turno;
+import DH.ClinicaOdontologica.entity.Turno;
+import DH.ClinicaOdontologica.repository.TurnoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class TurnoService {
-    private iDao<Turno> turnoiDao;
+    @Autowired
+    private TurnoRepository turnoRepository;
 
-    public TurnoService() {
-        turnoiDao= new TurnoDAOLISTA();
-    }
     public Turno guardarTurno(Turno turno){
-        return turnoiDao.guardar(turno);
+        return turnoRepository.save(turno);
     }
-    public List<Turno> buscarTodos(){
-        return turnoiDao.buscarTodos();
+    public Optional<Turno> buscarPorId(Long id){
+        return turnoRepository.findById(id);
     }
-    public Turno buscarPorId(Integer id){
-        return turnoiDao.buscarPorId(id);
+
+    public void actualizarTurno(Turno turno){
+        turnoRepository.save(turno);
     }
-    public void eliminarTurno (Turno turno){
-          turnoiDao.eliminar(turno);
+    public void eliminarTurno(Long id){
+        turnoRepository.deleteById(id);
     }
-    public void  actualizarTurno (Turno turno){
-        turnoiDao.actualizar(turno);
+    public List<Turno> listarTodos(){
+        return turnoRepository.findAll();
     }
 }
+
+

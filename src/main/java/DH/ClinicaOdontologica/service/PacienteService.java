@@ -1,37 +1,34 @@
 package DH.ClinicaOdontologica.service;
 
-
-import DH.ClinicaOdontologica.dao.PacienteDAOH2;
-import DH.ClinicaOdontologica.dao.iDao;
-import DH.ClinicaOdontologica.model.Paciente;
+import DH.ClinicaOdontologica.entity.Paciente;
+import DH.ClinicaOdontologica.repository.PacienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class PacienteService {
-    private iDao<Paciente> pacienteiDao;
+    @Autowired
+    private PacienteRepository pacienteRepository;
 
-    public PacienteService() {
-        pacienteiDao= new PacienteDAOH2();
-    }
-    //metodos manuales
     public Paciente guardarPaciente(Paciente paciente){
-        return pacienteiDao.guardar(paciente);
+        return pacienteRepository.save(paciente);
     }
-    public Paciente buscarPorID(Integer id){
-        return pacienteiDao.buscarPorId(id);
+    public Optional<Paciente> buscarPorId(Long id){
+        return pacienteRepository.findById(id);
     }
-    public Paciente buscarPorEmail(String email){
-        return pacienteiDao.buscarPorString(email);
+    public Optional<Paciente> buscarPorEmail(String email){
+        return pacienteRepository.findByEmail(email);
     }
     public void actualizarPaciente(Paciente paciente){
-        pacienteiDao.actualizar(paciente);
+        pacienteRepository.save(paciente);
     }
-    public void eliminarPaciente (Paciente paciente) {
-        pacienteiDao.eliminar(paciente);
+    public void eliminarPaciente(Long id){
+        pacienteRepository.deleteById(id);
     }
-    public List<Paciente> buscarTodos () {
-       return pacienteiDao.buscarTodos();
-
+    public List<Paciente> listarTodos(){
+        return pacienteRepository.findAll();
     }
 }
-

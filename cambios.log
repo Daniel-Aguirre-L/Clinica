@@ -257,21 +257,21 @@ INSERT INTO PACIENTES(NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EMA
 [2024-05-28 19:24:00] [ INFO ] [PacienteDAOH2:52] iniciando la operacion de buscado de un paciente con id : 1
 [2024-05-28 19:24:00] [ INFO ] [DomicilioDAOH2:48] iniciando la busqueda de un domicilio con id: 1
 [2024-05-28 19:24:00] [ WARN ] [PacienteDAOH2:79] Iniciando las operaciones para eliminar el paciente con id : 1
-[2024-05-28 19:24:00] [ ERROR] [PacienteDAOH2:90] Cannot invoke "DH.ClinicaOdontologica.model.Domicilio.getId()" because "domicilio" is null
+[2024-05-28 19:24:00] [ ERROR] [PacienteDAOH2:90] Cannot invoke "DH.ClinicaOdontologica.entity.Domicilio.getId()" because "domicilio" is null
 [2024-05-28 19:24:39] [ INFO ] [BD:36] tabla creada con exito
 [2024-05-28 19:24:47] [ INFO ] [OdontologoDAOList:15] Lista creada con exito!
 [2024-05-28 19:26:25] [ INFO ] [PacienteDAOH2:52] iniciando la operacion de buscado de un paciente con id : 1
 [2024-05-28 19:26:25] [ INFO ] [DomicilioDAOH2:48] iniciando la busqueda de un domicilio con id: 1
 [2024-05-28 19:26:25] [ WARN ] [PacienteDAOH2:79] Iniciando las operaciones para eliminar el paciente con id : 1
 [2024-05-28 19:26:25] [ INFO ] [DomicilioDAOH2:85] iniciando la actualizacion del domicilio con id: 1
-[2024-05-28 19:26:25] [ ERROR] [DomicilioDAOH2:98] Cannot invoke "java.lang.Integer.intValue()" because the return value of "DH.ClinicaOdontologica.model.Domicilio.getNumero()" is null
+[2024-05-28 19:26:25] [ ERROR] [DomicilioDAOH2:98] Cannot invoke "java.lang.Integer.intValue()" because the return value of "DH.ClinicaOdontologica.entity.Domicilio.getNumero()" is null
 [2024-05-28 19:29:11] [ INFO ] [BD:36] tabla creada con exito
 [2024-05-28 19:29:16] [ INFO ] [OdontologoDAOList:15] Lista creada con exito!
 [2024-05-28 19:29:28] [ INFO ] [PacienteDAOH2:52] iniciando la operacion de buscado de un paciente con id : 1
 [2024-05-28 19:29:29] [ INFO ] [DomicilioDAOH2:48] iniciando la busqueda de un domicilio con id: 1
 [2024-05-28 19:29:29] [ WARN ] [PacienteDAOH2:79] Iniciando las operaciones para eliminar el paciente con id : 1
 [2024-05-28 19:29:29] [ INFO ] [DomicilioDAOH2:85] iniciando la actualizacion del domicilio con id: 1
-[2024-05-28 19:29:29] [ ERROR] [DomicilioDAOH2:98] Cannot invoke "java.lang.Integer.intValue()" because the return value of "DH.ClinicaOdontologica.model.Domicilio.getNumero()" is null
+[2024-05-28 19:29:29] [ ERROR] [DomicilioDAOH2:98] Cannot invoke "java.lang.Integer.intValue()" because the return value of "DH.ClinicaOdontologica.entity.Domicilio.getNumero()" is null
 [2024-05-28 19:30:41] [ INFO ] [BD:36] tabla creada con exito
 [2024-05-28 19:30:46] [ INFO ] [OdontologoDAOList:15] Lista creada con exito!
 [2024-05-28 19:30:53] [ INFO ] [PacienteDAOH2:52] iniciando la operacion de buscado de un paciente con id : 1

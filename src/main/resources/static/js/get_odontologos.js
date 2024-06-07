@@ -17,7 +17,7 @@ window.addEventListener('load', function () {
             //cada fila tendrá un id que luego nos permitirá borrar la fila si eliminamos la pelicula
             var table = document.getElementById("odontologoTable");
             var odontologoRow =table.insertRow();
-            let tr_id = 'tr_' + pelicula.id;
+            let tr_id = 'tr_' + odontologo.id;
             odontologoRow.id = tr_id;
 
             //por cada pelicula creamos un boton delete que agregaremos en cada fila para poder eliminar la misma

@@ -1,53 +1,39 @@
 package DH.ClinicaOdontologica.service;
 
 
-import DH.ClinicaOdontologica.dao.OdontologoDAOH2;
-import DH.ClinicaOdontologica.dao.OdontologoDAOList;
-import DH.ClinicaOdontologica.dao.iDao;
-import DH.ClinicaOdontologica.model.Odontologo;
+import DH.ClinicaOdontologica.entity.Odontologo;
+import DH.ClinicaOdontologica.repository.OdontologoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class OdontologoService {
-    private iDao<Odontologo> odontologoiDao;
-    private iDao<Odontologo> odontologoiDaoList;
-
-    public OdontologoService() {
-        odontologoiDao = new OdontologoDAOH2();
-        odontologoiDaoList = new OdontologoDAOList();
-    }
+   @Autowired
+   private OdontologoRepository odontologoRepository;
 
     public Odontologo guardarOdontologo(Odontologo odontologo){
-
-        return odontologoiDao.guardar(odontologo);
+        return odontologoRepository.save(odontologo);
     }
 
-    public Odontologo buscarPorID(Integer id){
-        return  odontologoiDao.buscarPorId(id);
+    public Optional<Odontologo> buscarPorId(Long id){
+        return  odontologoRepository.findById(id);
     }
 
     public void actualizarOdontologo(Odontologo odontologo){
-        odontologoiDao.actualizar(odontologo);
+        odontologoRepository.save(odontologo);
     }
 
-    public List<Odontologo> buscarTodos(){
-
-        return odontologoiDao.buscarTodos();
+    public void eliminarOdontologo (Long id) {
+        odontologoRepository.deleteById(id);
     }
 
-    public void eliminarOdontologo (Odontologo odontologo) {
-        odontologoiDao.eliminar(odontologo);
-    }
+    public List<Odontologo> listarTodos(){
 
-    public Odontologo guardarOdontologoList(Odontologo odontologo){
-
-        return odontologoiDaoList.guardar(odontologo);
-    }
-
-    public List<Odontologo> listarOdontologosList(){
-
-        return odontologoiDaoList.buscarTodos();
+        return odontologoRepository.findAll();
     }
 
 }

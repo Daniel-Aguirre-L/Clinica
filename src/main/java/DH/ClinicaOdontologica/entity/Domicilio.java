@@ -1,19 +1,25 @@
-package DH.ClinicaOdontologica.model;
+package DH.ClinicaOdontologica.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Entity
+@Table(name = "domicilios")
 public class Domicilio {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String calle;
+    @Column
     private Integer numero;
+    @Column
     private String localidad;
+    @Column
     private String provincia;
-
-    public Domicilio() {
-    }
 
     public Domicilio(String calle, Integer numero, String localidad, String provincia) {
         this.calle = calle;
@@ -22,7 +28,9 @@ public class Domicilio {
         this.provincia = provincia;
     }
 
-    public Domicilio(Integer id, String calle, Integer numero, String localidad, String provincia) {
+
+
+    public Domicilio(Long id, String calle, Integer numero, String localidad, String provincia) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
@@ -30,7 +38,8 @@ public class Domicilio {
         this.provincia = provincia;
     }
 
-
+    public Domicilio() {
+    }
 
     @Override
     public String toString() {

@@ -1,58 +1,54 @@
 package DH.ClinicaOdontologica.controller;
 
 
-import DH.ClinicaOdontologica.model.Paciente;
+import DH.ClinicaOdontologica.entity.Paciente;
 import DH.ClinicaOdontologica.service.PacienteService;
-import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
+    @Autowired
     private PacienteService pacienteService;
 
-    public PacienteController() {
-        pacienteService= new PacienteService();
-    }
-    //ahora vienen todos los metodos que nos permitan actuar como intermediarios.
-    @GetMapping ("/{id}")
-    public Paciente buscarPacientePorId(@PathVariable Integer id){
-        return pacienteService.buscarPorID(id);
-    }
-
-    @GetMapping ()
-    public List<Paciente> listarPacientes(){
-        return pacienteService.buscarTodos();
-    }
-
     @PostMapping //--> nos permite persistir los datos que vienen desde la vista
-    public Paciente guardarPaciente(@RequestBody Paciente paciente){
-        return pacienteService.guardarPaciente(paciente);
+    public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente){
+        return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
     @PutMapping
-    public String actualizarPaciente(@RequestBody Paciente paciente){
+    public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente){
 
-        Paciente pacienteBuscado= pacienteService.buscarPorID(paciente.getId());
-        if(pacienteBuscado!=null){
+        Optional<Paciente> pacienteBuscado= pacienteService.buscarPorId(paciente.getId());
+        if(pacienteBuscado.isPresent()){
             pacienteService.actualizarPaciente(paciente);
-            return "paciente actualizado con exito";
+            return ResponseEntity.ok("paciente actualizado con exito");
         }else{
-            return "paciente no encontrado";
+            return  ResponseEntity.badRequest().build();
         }
 
     }
-    @DeleteMapping("/{id}")
-    public String eliminarPaciente (@PathVariable Integer id) {
-        Paciente pacienteBuscado = pacienteService.buscarPorID(id);
-        if(pacienteBuscado!=null){
-            pacienteService.eliminarPaciente(pacienteBuscado);
-            return "paciente eliminado con exito";
-        }else{
-            return "paciente no encontrado";
-        }
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<Optional<Paciente>> buscarPorId(@PathVariable Long id){
 
+        return ResponseEntity.ok(pacienteService.buscarPorId(id));
+    }
+    @GetMapping("/buscar/{email}")
+    public ResponseEntity<Optional<Paciente>> buscarPorEmail(@PathVariable String email){
+        Optional<Paciente> pacienteBuscado= pacienteService.buscarPorEmail(email);
+        if(pacienteBuscado.isPresent()){
+            return ResponseEntity.ok(pacienteBuscado);
+        }else{
+            return  ResponseEntity.notFound().build();
+        }
+    }
+    @GetMapping
+    public ResponseEntity<List<Paciente>> buscarTodos(){
+        return ResponseEntity.ok(pacienteService.listarTodos());
     }
 
 }
