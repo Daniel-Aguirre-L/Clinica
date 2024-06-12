@@ -2,9 +2,11 @@ package DH.ClinicaOdontologica.controller;
 
 
 
+import DH.ClinicaOdontologica.entity.Odontologo;
 import DH.ClinicaOdontologica.entity.Turno;
 import DH.ClinicaOdontologica.service.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +34,16 @@ public class TurnoController {
             return  ResponseEntity.badRequest().build();
         }
 
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarTurno(@PathVariable Long id) {
+        Optional<Turno> turnoBuscado = turnoService.buscarPorId(id);
+        if (turnoBuscado.isPresent()) {
+            turnoService.eliminarTurno(id);
+            return ResponseEntity.ok("Turno eliminado con éxito");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Turno no encontrado");
+        }
     }
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Optional<Turno>> buscarPorId(@PathVariable Long id){
