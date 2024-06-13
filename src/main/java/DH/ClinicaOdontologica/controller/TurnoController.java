@@ -24,6 +24,7 @@ public class TurnoController {
     public ResponseEntity<Turno> guardarTurno(@RequestBody Turno turno){
         return ResponseEntity.ok(turnoService.guardarTurno(turno));
     }
+
     @PutMapping
     public ResponseEntity<String> actualizarTurno(@RequestBody Turno turno){
         Optional<Turno> turnoBuscado= turnoService.buscarPorId(turno.getId());
@@ -35,6 +36,7 @@ public class TurnoController {
         }
 
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarTurno(@PathVariable Long id) {
         Optional<Turno> turnoBuscado = turnoService.buscarPorId(id);
@@ -45,6 +47,7 @@ public class TurnoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Turno no encontrado");
         }
     }
+
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Optional<Turno>> buscarPorId(@PathVariable Long id){
 

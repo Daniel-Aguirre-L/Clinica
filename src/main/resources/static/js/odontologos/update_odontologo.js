@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
     //se encarga de llenar el formulario con los datos de la pelicula
     //que se desea modificar
     function findBy(id) {
-          const url = '/odontologos'+"/"+id;
+          const url = '/odontologos/buscar/'+id;
           const settings = {
               method: 'GET'
           }

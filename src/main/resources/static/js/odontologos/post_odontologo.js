@@ -56,7 +56,7 @@ window.addEventListener('load', function () {
     function resetUploadForm(){
         document.querySelector('#matricula').value = "";
         document.querySelector('#nombre').value = "";
-         document.querySelector('#apellido').value = "";
+        document.querySelector('#apellido').value = "";
 
     }
 
