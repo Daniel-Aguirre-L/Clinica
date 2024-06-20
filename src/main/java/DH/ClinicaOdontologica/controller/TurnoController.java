@@ -6,6 +6,7 @@ package DH.ClinicaOdontologica.controller;
 import DH.ClinicaOdontologica.entity.Odontologo;
 import DH.ClinicaOdontologica.entity.Paciente;
 import DH.ClinicaOdontologica.entity.Turno;
+import DH.ClinicaOdontologica.exception.BadRequestException;
 import DH.ClinicaOdontologica.exception.ResourceNotFoundException;
 import DH.ClinicaOdontologica.service.OdontologoService;
 import DH.ClinicaOdontologica.service.PacienteService;
@@ -29,7 +30,7 @@ public class TurnoController {
     private OdontologoService odontologoService;
 
     @PostMapping
-    public ResponseEntity<Turno> guardarTurno(@RequestBody Turno turno) throws ResourceNotFoundException {
+    public ResponseEntity<Turno> guardarTurno(@RequestBody Turno turno) throws BadRequestException {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(turno.getPaciente().getId());
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorId(turno.getOdontologo().getId());
 
@@ -38,7 +39,7 @@ public class TurnoController {
             turno.setOdontologo(odontologoBuscado.get());
             return ResponseEntity.ok(turnoService.guardarTurno(turno));
         } else {
-            throw new ResourceNotFoundException("Paciente o Odontólogo no encontrado");
+            throw new BadRequestException("Paciente o Odontólogo no encontrado");
         }
     }
 

@@ -1,12 +1,10 @@
 package DH.ClinicaOdontologica.controller;
 
 
-import DH.ClinicaOdontologica.entity.Odontologo;
 import DH.ClinicaOdontologica.entity.Paciente;
 import DH.ClinicaOdontologica.exception.ResourceNotFoundException;
 import DH.ClinicaOdontologica.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +29,7 @@ public class PacienteController {
             pacienteService.actualizarPaciente(paciente);
             return ResponseEntity.ok("Paciente actualizado con éxito");
         } else {
-            throw new ResourceNotFoundException("Paciente con ID: " + paciente.getId() + " no encontrado");
+            throw new ResourceNotFoundException("Paciente con ID " + paciente.getId() + " no encontrado");
         }
     }
 
@@ -42,7 +40,7 @@ public class PacienteController {
             pacienteService.eliminarPaciente(id);
             return ResponseEntity.ok("Paciente eliminado con éxito");
         } else {
-            throw new ResourceNotFoundException("Paciente con ID: " + id + " no encontrado");
+            throw new ResourceNotFoundException("Paciente con ID " + id + " no encontrado");
         }
     }
 
@@ -52,7 +50,7 @@ public class PacienteController {
         if (paciente.isPresent()) {
             return ResponseEntity.ok(paciente);
         } else {
-            throw new ResourceNotFoundException("Paciente con ID: " + id + " no encontrado");
+            throw new ResourceNotFoundException("Paciente con ID " + id + " no encontrado");
         }
     }
 
@@ -62,7 +60,7 @@ public class PacienteController {
         if (pacienteBuscado.isPresent()) {
             return ResponseEntity.ok(pacienteBuscado);
         } else {
-            throw new ResourceNotFoundException("Paciente con email: " + email + " no encontrado");
+            throw new ResourceNotFoundException("Paciente con email " + email + " no encontrado");
         }
     }
 

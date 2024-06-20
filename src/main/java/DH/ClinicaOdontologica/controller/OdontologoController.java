@@ -28,7 +28,7 @@ public class OdontologoController {
             odontologoService.actualizarOdontologo(odontologo);
             return ResponseEntity.ok("Odontólogo actualizado con éxito");
         } else {
-            throw new ResourceNotFoundException("Odontólogo con ID: " + odontologo.getId() + " no encontrado");
+            throw new ResourceNotFoundException("Odontólogo con ID " + odontologo.getId() + " no encontrado");
         }
     }
 
@@ -39,7 +39,7 @@ public class OdontologoController {
             odontologoService.eliminarOdontologo(id);
             return ResponseEntity.ok("Odontólogo eliminado con éxito");
         } else {
-            throw new ResourceNotFoundException("Odontólogo con ID: " + id + " no encontrado");
+            throw new ResourceNotFoundException("Odontólogo con ID " + id + " no encontrado");
         }
     }
 
@@ -49,7 +49,7 @@ public class OdontologoController {
         if (odontologo.isPresent()) {
             return ResponseEntity.ok(odontologo);
         } else {
-            throw new ResourceNotFoundException("Odontólogo con ID: " + id + " no encontrado");
+            throw new ResourceNotFoundException("Odontólogo con ID " + id + " no encontrado");
         }
     }
 

@@ -12,4 +12,9 @@ public class GlobalException {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(" mensaje: "+rnfe.getMessage());
     }
 
+    @ExceptionHandler({BadRequestException.class})
+    public ResponseEntity<String> tratamientoBadRequestException(BadRequestException bre) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mensaje: " + bre.getMessage());
+    }
+
 }
