@@ -27,8 +27,11 @@ public class Turno {
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
-
-
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
+        this.paciente = paciente;
+        this.odontologo = odontologo;
+        this.fecha = fecha;
+    }
 
     public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha) {
         this.id = id;
