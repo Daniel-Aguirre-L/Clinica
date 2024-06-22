@@ -1,16 +1,13 @@
 window.addEventListener('load', function () {
 
 
-    //Buscamos y obtenemos el formulario donde estan
-    //los datos que el usuario pudo haber modificado de la pelicula
+
     const formulario = document.querySelector('#update_odontologo_form');
 
     formulario.addEventListener('submit', function (event) {
         let odontologoId = document.querySelector('#odontologo_id').value;
 
-        //creamos un JSON que tendrá los datos de la película
-        //a diferencia de una pelicula nueva en este caso enviamos el id
-        //para poder identificarla y modificarla para no cargarla como nueva
+
         const formData = {
             id: document.querySelector('#odontologo_id').value,
             matricula: document.querySelector('#matricula').value,
@@ -19,8 +16,7 @@ window.addEventListener('load', function () {
 
         };
 
-        //invocamos utilizando la función fetch la API peliculas con el método PUT que modificará
-        //la película que enviaremos en formato JSON
+
         const url = '/odontologos';
         const settings = {
             method: 'PUT',
@@ -35,9 +31,7 @@ window.addEventListener('load', function () {
     })
  })
 
-    //Es la funcion que se invoca cuando se hace click sobre el id de una pelicula del listado
-    //se encarga de llenar el formulario con los datos de la pelicula
-    //que se desea modificar
+
     function findBy(id) {
           const url = '/odontologos/buscar/'+id;
           const settings = {

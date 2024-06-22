@@ -1,8 +1,6 @@
 package DH.ClinicaOdontologica.controller;
 
 
-
-
 import DH.ClinicaOdontologica.entity.Odontologo;
 import DH.ClinicaOdontologica.entity.Paciente;
 import DH.ClinicaOdontologica.entity.Turno;
